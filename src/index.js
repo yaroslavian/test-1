@@ -1,6 +1,12 @@
-var main = function() {
-   document.getElementById('app').innerHTML = 'Test';
-   return void 0;
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const APP_CONTAINER = document.getElementById('app');
+
+class TestClass extends React.Component {
+   render() {
+      return <div><h1>Here is the test component!</h1></div>;
+   }
 }
 
-main();
+ReactDOM.render(<TestClass />, APP_CONTAINER);
