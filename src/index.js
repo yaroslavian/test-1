@@ -9,7 +9,6 @@ class TestClass extends React.Component {
    render() {
    return (
       <div>
-         <h1>Таблица 1</h1>
          <DeviationTable />
       </div>);
    }

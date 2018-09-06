@@ -56,7 +56,7 @@ export class DeviationTable extends React.Component {
       });
 
       return (
-         <table className="DeviationTable">
+         <table cellPadding="0" cellSpacing="0" className="DeviationTable">
             <thead onClick={this.handleHeaderClick}>
                <tr>{headersRow}</tr>
             </thead>

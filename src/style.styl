@@ -1,19 +1,30 @@
 body
    background-color: #192329
    color: #fff
-  
+
+#app 
+   width: 100%
+
 .DeviationTable
    font-family: Arial, Helvetica, sans-serif
    font-size: 14px
+   width: 100%
 
-   tr
-      &:nth-child(even) 
-         background-color: #1c252d
-      &:hover
-         background-color: darkgreen
+   thead
+      th
          cursor: pointer
-      td
          padding: 10px
+         text-align: left 
+
+   tbody
+      tr
+         &:nth-child(odd) 
+            background-color: #1c252d
+         &:hover
+            background-color: darkgreen
+            cursor: pointer
+         td
+            padding: 10px
 
 .Indicator
    color: darkred
