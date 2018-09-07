@@ -24,7 +24,7 @@ const tableData = rawTableData.map(elem => {
    return [ 
       ...elem.axis.r.map(elem => elem.sName_RU), 
       elem.sMeasDelta_RU, 
-      <Indicator value={Math.round(elem.fDeltaPlan * 100)} />
+      <Indicator maxAbs={maxAbs} value={Number(elem.fDeltaPlan)} />
    ];
 });
 
