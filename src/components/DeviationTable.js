@@ -1,14 +1,18 @@
 import React from 'react';
 import { tableHeaders, tableData } from '../data-source/DataSource'; 
 
+/**
+ * Компонент таблицы
+ */
+
 export class DeviationTable extends React.Component {
    constructor(props) {
       super(props);
 
       this.state = {
-         tableData: tableData,
-         sortBy: null,
-         descending: false
+         tableData: tableData, // Данные для заполнения таблицы
+         sortBy: null, // Индекс колонки, по которой сортируем
+         descending: false // Прямая или обратная сортировка
       };
 
       this.handleHeaderClick = this.handleHeaderClick.bind(this);
@@ -16,11 +20,10 @@ export class DeviationTable extends React.Component {
 
    handleHeaderClick(ev) {
       var column = ev.target.cellIndex;
-
-      var descending = this.state.sortBy === column && !this.state.descending;
+      var descending = this.state.sortBy === column && !this.state.descending; 
       
-
       var newTableData = [...this.state.tableData].sort((a,b) => {
+         // Если внутри ячейки лежит компонент, то сортируем по его свойству "value"
          if(typeof a[column] === 'object') {
             a = a[column].props.value;
             b = b[column].props.value;
@@ -50,7 +53,7 @@ export class DeviationTable extends React.Component {
       const headersRow = tableHeaders.map((elem, index) => {
          let title = elem;
          if(this.state.sortBy === index) {
-            title += (this.state.descending ? ' \u2191 ' : ' \u2193 ');
+            title += (this.state.descending ? ' \u2191 ' : ' \u2193 '); // Рисуем стрелочку, которая показывает направление сортировки
          }
          return <th key={index}>{title}</th>;
       });
