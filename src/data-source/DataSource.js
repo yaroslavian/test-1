@@ -1,4 +1,6 @@
 import data from './data.json';
+import { Indicator } from '../components/Indicator';
+import React from 'react';
 
 const getMaxAbs = function(arr) {
    const sortedArr = Array.from(rawTableData).sort((a,b) => {
@@ -22,8 +24,7 @@ const tableData = rawTableData.map(elem => {
    return [ 
       ...elem.axis.r.map(elem => elem.sName_RU), 
       elem.sMeasDelta_RU, 
-      // maxAbs/elem.fDeltaPlan
-      Math.round(elem.fDeltaPlan * 100)
+      <Indicator value={Math.round(elem.fDeltaPlan * 100)} />
    ];
 });
 
