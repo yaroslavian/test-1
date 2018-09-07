@@ -1,6 +1,5 @@
 import React from 'react';
 import { tableHeaders, tableData } from '../data-source/DataSource'; 
-// import { Indicator } from './Indicator';
 
 export class DeviationTable extends React.Component {
    constructor(props) {
@@ -8,7 +7,7 @@ export class DeviationTable extends React.Component {
 
       this.state = {
          tableData: tableData,
-         sortBy: 3,
+         sortBy: null,
          descending: false
       };
 
@@ -22,12 +21,20 @@ export class DeviationTable extends React.Component {
       
 
       var newTableData = [...this.state.tableData].sort((a,b) => {
-         if(descending) {
-            if(a[column] < b[column]) return 1;
-            if(a[column] > b[column]) return -1;
+         if(typeof a[column] === 'object') {
+            a = a[column].props.value;
+            b = b[column].props.value;
          } else {
-            if(a[column] > b[column]) return 1;
-            if(a[column] < b[column]) return -1;   
+            a = a[column];  
+            b = b[column];
+         }
+         
+         if(descending) {
+            if(a < b) return 1;
+            if(a > b) return -1;
+         } else {
+            if(a > b) return 1;
+            if(a < b) return -1;   
          }
          return 0;
       });
